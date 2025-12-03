@@ -1,4 +1,4 @@
-# DRL-robot-navigation
+# DAEP
 
 
 Deep Reinforcement Learning for mobile robot navigation in ROS Gazebo simulator. Using Twin Delayed Deep Deterministic Policy Gradient (TD3) neural network, a robot learns to navigate to a random goal point in a simulated environment while avoiding obstacles. Obstacles are detected by laser readings and a goal is given to the robot in polar coordinates. Trained in ROS Gazebo simulator with PyTorch.  Tested with ROS Noetic on Ubuntu 20.04 with python 3.8.10 and pytorch 1.10.
@@ -17,7 +17,7 @@ Clone the repository:
 ```shell
 $ cd ~
 ### Clone this repo
-$ git clone https://github.com/reiniscimurs/DRL-robot-navigation
+$ git clone https://github.com/reiniscimurs/DAEP
 ```
 The network can be run with a standard 2D laser, but this implementation uses a simulated [3D Velodyne sensor](https://github.com/lmark1/velodyne_simulator)
 
@@ -41,13 +41,13 @@ $ source devel_isolated/setup.bash
 
 Run the training:
 ```shell
-$ cd ~/DRL-robot-navigation/TD3_DAEP
+$ cd ~/DAEP/TD3_DAEP
 $ python3 train_velodyne_td3_daep.py
 ```
 
 To check the training process on tensorboard:
 ```shell
-$ cd ~/DRL-robot-navigation/TD3_DAEP
+$ cd ~/DAEP/TD3_DAEP
 $ tensorboard --logdir runs
 ```
 
@@ -58,7 +58,7 @@ $ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher g
 
 Once training is completed, test the model:
 ```shell
-$ cd ~/DRL-robot-navigation/TD3_DAEP
+$ cd ~/DAEP/TD3_DAEP
 $ python3 test_velodyne_td3_daep.py
 ```
 
