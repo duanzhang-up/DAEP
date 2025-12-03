@@ -1,0 +1,19 @@
+<launch>
+    <!-- 包含Gazebo的launch文件 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find multi_robot_scenario)/launch/场景1.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+    <!-- 从odom参考系转换为map坐标系 -->
+    <include file="$(find multi_robot_scenario)/launch/map_odom.launch"/>
+
+    <!-- 启动RViz并加载.rviz配置文件 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_robot_scenario)/launch/pioneer3dx.rviz" required="true" />
+
+    <!-- 启动动态障碍物控制节点
+    <node name="dynamic_obstacles_node" pkg="multi_robot_scenario" type="dynamic_obstacles.py" output="screen" /> -->
+</launch>
